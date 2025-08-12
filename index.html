@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chayamba Secondary School</title>
-    <script src="https://cdn.tailwindcss.com">
-    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
         body {
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
@@ -30,11 +30,34 @@
 
         #girls {
             height: 400px;
-            width: 300px;
+            width: 100%; /* Changed to 100% for responsiveness */
             margin: 7px;
         }
 
-         
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Hide links by default on mobile */
+            }
+
+            .nav-toggle {
+                display: block; /* Show toggle button on mobile */
+            }
+
+            .nav-active {
+                display: flex; /* Show links when active */
+                flex-direction: column; /* Stack links vertically */
+                align-items: center; /* Center items horizontally */
+                justify-content: center; /* Center items vertically */
+                position: absolute; /* Positioning for dropdown */
+                top: 100%; /* Below the nav */
+                left: 0;
+                right: 0;
+                background-color: #2f855a; /* Match the nav background */
+                z-index: 10;
+                padding: 10px 0; /* Add some padding for better spacing */
+            }
+        }
     </style>
 </head>
 
@@ -46,20 +69,36 @@
                 <img src="download.jpg" alt="Chayamba Secondary School logo featuring an oak tree emblem with green and gold colors" class="h-12" />
                 <span class="font-semibold text-xl">Chayamba Secondary</span>
             </div>
-            <div class="hidden md:flex items-center space-x-8">
+            <div class="hidden md:flex items-center space-x-8 nav-links">
                 <a href="#home" class="hover:text-green-200">Home</a>
                 <a href="#about" class="hover:text-green-200">About</a>
                 <a href="#academics" class="hover:text-green-200">Academics</a>
                 <a href="#events" class="hover:text-green-200">Events</a>
                 <a href="#contact" class="hover:text-green-200">Contact</a>
             </div>
-            <button class="md:hidden focus:outline-none">
+            <button class="md:hidden focus:outline-none nav-toggle">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
         </div>
+        <div class="nav-active hidden">
+            <a href="#home" class="block px-4 py-2 hover:text-green-200">Home</a>
+            <a href="#about" class="block px-4 py-2 hover:text-green-200">About</a>
+            <a href="#academics" class="block px-4 py-2 hover:text-green-200">Academics</a>
+            <a href="#events" class="block px-4 py-2 hover:text-green-200">Events</a>
+            <a href="#contact" class="block px-4 py-2 hover:text-green-200">Contact</a>
+        </div>
     </nav>
+
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navActive = document.querySelector('.nav-active');
+
+        navToggle.addEventListener('click', () => {
+            navActive.classList.toggle('hidden');
+        });
+    </script>
 
     <!-- Hero Section -->
     <section id="home" class="hero h-screen flex items-center justify-center text-white">
@@ -212,14 +251,14 @@
                 
                 <div class="bg-white p-6 rounded-lg shadow-md text-center">
                     <img src="headteacher.jpg" alt="Young history teacher engaging with students in a classroom discussion" class="w-32 h-32 mx-auto rounded-full mb-4 object-cover" />
-                    <h3 class="text-xl font-semibold mb-1">A. Mlauzi</h3>
+                    <h3 class="text-xl font-semibold mb-1">M. Mlauzi</h3>
                     <p class="text-green-600 mb-3">Science Department</p>
                     <p class="text-gray-600 text-sm">Focuses on world Sciences and civic education</p>
                 </div>
                 
                 <div class="bg-white p-6 rounded-lg shadow-md text-center">
                     <img src="headteacher.jpg" alt="Senior English Literature professor holding classic books" class="w-32 h-32 mx-auto rounded-full mb-4 object-cover" />
-                    <h3 class="text-xl font-semibold mb-1">D. Mkandawire</h3>
+                    <h3 class="text-xl font-semibold mb-1">D. Nyirenda</h3>
                     <p class="text-green-600 mb-3">English Department</p>
                     <p class="text-gray-600 text-sm">Expert in contemporary literature and creative writing</p>
                 </div>
@@ -392,4 +431,3 @@
                 We respect your privacy. Unsubscribe at any time.
             </p>
         </div>
-
